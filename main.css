@@ -1,7 +1,138 @@
-body,
-html {
-  /* height:100%; */
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-  margin: 0px;
-  padding: 0px;
+body {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Main Layout - 3-row CSS Grid */
+#app {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    grid-area: header;
+    background-color: #F4C18A;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0;
+    font-size: 1.5rem;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li:not(:last-child)::after {
+    content: " |";
+    margin: 0 10px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Main Content Area - Grid Layout for Items */
+main {
+    grid-area: main;
+    background-color: #F4C18A;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-content: start;
+}
+
+/* Individual Store Item */
+.store-item {
+    background-color: #A8C9E8;
+    border: 3px solid #4A7BA7;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 400px;
+}
+
+/* Item Image */
+.store-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Item Name (first p tag) */
+.store-item p:first-of-type {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Item Description (second p tag) */
+.store-item p:nth-of-type(2) {
+    font-size: 0.9rem;
+    flex-grow: 1;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Make spans display inline in the same row */
+.store-item span {
+    font-size: 0.9rem;
+    display: inline;
+}
+
+/* Add spacing between spans */
+.store-item span:not(:last-of-type) {
+    margin-right: 15px;
+}
+
+/* Footer Styles */
+footer {
+    grid-area: footer;
+    background-color: #F4C18A;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Ensure no horizontal overflow */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
 }
